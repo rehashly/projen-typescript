@@ -6,7 +6,7 @@ const project = new cdk.JsiiProject({
   name: 'projen-github-typescript',
   packageManager: javascript.NodePackageManager.NPM,
   packageName: '@rehashly/projen-github-typescript',
-  description: `Rehashly's opinionated projen GitHub typescript project type.`,
+  description: 'Rehashly\'s opinionated projen GitHub typescript project type.',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/rehashly/projen-github-typescript.git',
   deps: ['projen'],
