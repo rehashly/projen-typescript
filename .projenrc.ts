@@ -6,11 +6,11 @@ const project = new cdk.JsiiProject({
   name: 'projen-github-typescript',
   packageManager: javascript.NodePackageManager.NPM,
   packageName: '@rehashly/projen-github-typescript',
+  description: `Rehashly's opinionated projen GitHub typescript project type.`,
   projenrcTs: true,
   repositoryUrl: 'https://github.com/rehashly/projen-github-typescript.git',
-
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
+  deps: ['projen'],
+  devDeps: ['fs-extra', '@types/fs-extra', 'glob'],
+  peerDeps: ['projen'],
 });
 project.synth();
