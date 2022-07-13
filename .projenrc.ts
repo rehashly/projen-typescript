@@ -18,6 +18,7 @@ const project = new typescript.TypeScriptProject({
     },
   },
   projenrcTs: true,
+  releaseToNpm: true,
   deps: ['projen'],
   peerDeps: ['projen'],
 })
