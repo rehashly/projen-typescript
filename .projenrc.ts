@@ -1,16 +1,25 @@
-import { cdk, javascript } from 'projen';
-const project = new cdk.JsiiProject({
-  author: 'Haitham Gad',
-  authorAddress: 'haitham@rehashly.com',
+import { javascript, typescript } from 'projen'
+
+const project = new typescript.TypeScriptProject({
+  authorName: 'Haitham Gad',
+  authorEmail: 'haitham@rehashly.com',
+  authorOrganization: true,
   defaultReleaseBranch: 'main',
-  name: 'projen-github-typescript',
+  description: "Rehashly's opinionated projen typescript project type.",
+  name: 'rehashly-projen-typescript',
+  npmAccess: javascript.NpmAccess.PUBLIC,
   packageManager: javascript.NodePackageManager.NPM,
-  packageName: '@rehashly/projen-github-typescript',
-  description: 'Rehashly\'s opinionated projen GitHub typescript project type.',
+  packageName: '@rehashly/projen-typescript',
+  prettier: true,
+  prettierOptions: {
+    settings: {
+      singleQuote: true,
+      semi: false,
+    },
+  },
   projenrcTs: true,
-  repositoryUrl: 'https://github.com/rehashly/projen-github-typescript.git',
   deps: ['projen'],
-  devDeps: ['fs-extra', '@types/fs-extra', 'glob'],
   peerDeps: ['projen'],
-});
-project.synth();
+})
+
+project.synth()
