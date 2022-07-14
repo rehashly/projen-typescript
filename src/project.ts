@@ -1,3 +1,4 @@
+import { execSync } from 'child_process'
 import { basename, resolve } from 'path'
 import { javascript, typescript } from 'projen'
 
@@ -30,6 +31,32 @@ function merge(...objects: any[]): any {
   }, {})
 }
 
+/**
+ * Executes `command` and returns its value or undefined if the command failed.
+ */
+export function execOrUndefined(
+  command: string,
+  options: { cwd: string }
+): string | undefined {
+  try {
+    const MAX_BUFFER = 10 * 1024 * 1024
+    const value = execSync(command, {
+      stdio: ['inherit', 'pipe', 'pipe'], // "pipe" for STDERR means it appears in exceptions
+      maxBuffer: MAX_BUFFER,
+      cwd: options.cwd,
+    })
+      .toString('utf-8')
+      .trim()
+
+    if (!value) {
+      return undefined
+    } // an empty string is the same as undefined
+    return value
+  } catch {
+    return undefined
+  }
+}
+
 export interface RehashlyTypeScriptProjectOptions
   extends typescript.TypeScriptProjectOptions {}
 
@@ -53,6 +80,8 @@ export class RehashlyTypeScriptProject extends typescript.TypeScriptProject {
     super(
       merge(
         {
+          authorName: execOrUndefined('git config user.name', { cwd: '.' }),
+          authorEmail: execOrUndefined('git config user.email', { cwd: '.' }),
           authorOrganization: true,
           copyrightOwner: 'Rehashly, LLC',
           copyrightPeriod: new Date().getFullYear().toString(),

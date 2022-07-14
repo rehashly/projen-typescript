@@ -1,5 +1,6 @@
 {
   "name": "@rehashly/projen-typescript",
+  "description": "Rehashly's opinionated projen TypeScript project type.",
   "repository": {
     "type": "git",
     "url": "https://github.com/rehashly/projen-typescript.git"
@@ -67,6 +68,10 @@
   "dependencies": {
     "projen": "^0.58.28"
   },
+  "keywords": [
+    "projen",
+    "typescript"
+  ],
   "main": "lib/index.js",
   "license": "MIT",
   "publishConfig": {
