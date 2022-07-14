@@ -1,12 +1,12 @@
+import { basename, resolve } from 'path'
 import { RehashlyTypeScriptProject } from '../src'
 
-test('RehashlyTypeScriptProject', () => {
+test('project name is set correctly', () => {
   const project = new RehashlyTypeScriptProject({
-    name: 'example-typescript-project',
-    authorName: 'Author',
-    authorEmail: 'author@example.com',
-    description: 'test project',
+    name: 'projen-typescript',
+    authorName: 'Some Author',
+    defaultReleaseBranch: 'main',
   })
 
-  expect(project.prettier).toBeTruthy()
+  expect(project.name).toBe(basename(resolve('.')))
 })

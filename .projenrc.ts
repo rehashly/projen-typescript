@@ -1,26 +1,15 @@
-import { javascript, typescript } from 'projen'
-
-const project = new typescript.TypeScriptProject({
-  authorName: 'Haitham Gad',
-  authorEmail: 'haitham@rehashly.com',
-  authorOrganization: true,
+import { RehashlyJsiiProject } from '@rehashly/projen-jsii'
+const project = new RehashlyJsiiProject({
+  author: 'Haitham Gad',
+  authorAddress: 'haitham@rehashly.com',
   defaultReleaseBranch: 'main',
-  description: "Rehashly's opinionated projen typescript project type.",
-  name: 'rehashly-projen-typescript',
-  npmAccess: javascript.NpmAccess.PUBLIC,
-  packageManager: javascript.NodePackageManager.NPM,
+  devDeps: ['@rehashly/projen-jsii'],
+  name: 'projen-typescript',
   packageName: '@rehashly/projen-typescript',
-  prettier: true,
-  prettierOptions: {
-    settings: {
-      singleQuote: true,
-      semi: false,
-    },
-  },
-  projenrcTs: true,
-  releaseToNpm: true,
-  deps: ['projen'],
-  peerDeps: ['projen'],
-})
+  repositoryUrl: 'https://github.com/rehashly/projen-typescript.git',
 
+  // deps: [],                /* Runtime dependencies of this module. */
+  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
+  // packageName: undefined,  /* The "name" in package.json. */
+})
 project.synth()
